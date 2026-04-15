@@ -43,6 +43,7 @@ def home():
 def match():
     return FileResponse("app/static/index.html")
 
+
 @app.get("/api/tags")
 def get_tags() -> dict:
     return {
