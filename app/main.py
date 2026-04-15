@@ -35,9 +35,13 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 
 @app.get("/")
-def read_index() -> FileResponse:
-    return FileResponse(STATIC_DIR / "index.html")
+def home():
+    return FileResponse("app/static/home.html")
 
+
+@app.get("/match")
+def match():
+    return FileResponse("app/static/index.html")
 
 @app.get("/api/tags")
 def get_tags() -> dict:
