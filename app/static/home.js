@@ -58,7 +58,7 @@ function continueMatch() {
     return;
   }
 
-  window.location.href = "/";
+  window.location.href = "/match";
 }
 
 function clearMatch() {
