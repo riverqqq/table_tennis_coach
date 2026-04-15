@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>比赛记录 / 局间战术</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <h1>比赛记录 / 局间战术</h1>
+    <p>记录本局关键得分与失分模式，自动生成下一局建议</p>
+  </header>
+
+  <section class="panel match-overview">
+    <div class="panel-header">
+      <h2>当前比赛信息</h2>
+      <span class="badge success" id="match-status-badge">比赛进行中</span>
+    </div>
+
+    <div class="match-meta-grid">
+      <div class="meta-pill">赛制：<span id="match-format-text">-</span></div>
+      <div class="meta-pill">当前局数：第 <span id="current-game-number">1</span> 局</div>
+      <div class="meta-pill">大比分：<span id="match-score-text">0 : 0</span></div>
+    </div>
+  </section>
+
+  <section class="top-actions">
+    <button id="analyze-btn" class="primary-btn">开始布置战术</button>
+    <button id="reset-btn" class="secondary-btn">清空本局记录</button>
+  </section>
+
+  <section class="layout-grid">
+    <div class="panel">
+      <div class="panel-header">
+        <h2>得分记录</h2>
+        <span class="badge" id="scoring-total">0</span>
+      </div>
+      <p class="panel-desc">只记录明显、可重复的战术性得分原因</p>
+      <div id="scoring-groups" class="group-list"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2>失分记录</h2>
+        <span class="badge danger" id="losing-total">0</span>
+      </div>
+      <p class="panel-desc">只记录明显、可复现的失分模式，不记擦边擦网运气球</p>
+      <div id="losing-groups" class="group-list"></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-header">
+      <h2>对手特征</h2>
+      <span class="badge success" id="traits-total">0</span>
+    </div>
+    <p class="panel-desc">建议只勾选最明显的 1–3 个特征</p>
+    <div id="traits-container" class="traits-grid"></div>
+  </section>
+
+  <section class="panel summary-panel">
+    <div class="panel-header">
+      <h2>本局记录摘要</h2>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-box">
+        <h3>高频得分</h3>
+        <div id="top-scoring" class="summary-list empty-text">暂无记录</div>
+      </div>
+      <div class="summary-box">
+        <h3>高频失分</h3>
+        <div id="top-losing" class="summary-list empty-text">暂无记录</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel result-panel">
+    <div class="panel-header">
+      <h2 id="plan-panel-title">当前建议</h2>
+      <span class="badge output-badge">局间输出</span>
+    </div>
+
+    <div class="result-card">
+      <h3>局势判断</h3>
+      <p id="summary" class="result-text">等待载入建议。</p>
+    </div>
+
+    <div class="result-card">
+      <h3 id="main-label">主战术</h3>
+      <p id="main-strategy" class="result-text">等待分析。</p>
+    </div>
+
+    <div class="result-card">
+      <h3 id="risk-label">风险提醒</h3>
+      <p id="risk-alert" class="result-text">等待分析。</p>
+    </div>
+
+    <div class="result-card">
+      <h3 id="actions-label">执行方案</h3>
+      <ol id="actions" class="actions-list">
+        <li class="muted">等待分析。</li>
+      </ol>
+    </div>
+
+    <div id="status-message" class="status-message"></div>
+  </section>
+
+  <section class="panel score-entry-panel">
+    <div class="panel-header">
+      <h2>本局结束</h2>
+      <span class="badge danger">提交本局比分</span>
+    </div>
+
+    <p class="panel-desc">打完这一局后，输入比分并进入下一局。如果比赛结束，系统会停在当前页。</p>
+
+    <div class="score-row">
+      <div class="score-input-box">
+        <label for="my-score">我方分数</label>
+        <input id="my-score" class="score-input" type="number" min="0" max="99" placeholder="0" />
+      </div>
+
+      <div class="score-input-box">
+        <label for="opponent-score">对手分数</label>
+        <input id="opponent-score" class="score-input" type="number" min="0" max="99" placeholder="0" />
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button id="finish-game-btn" class="primary-btn">本局结束并进入下一局</button>
+    </div>
+  </section>
+</div>
+
+<script src="/static/match_state.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

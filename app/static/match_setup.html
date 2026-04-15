@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>开始比赛</title>
+    <link rel="stylesheet" href="/static/profile.css" />
+</head>
+<body>
+<div class="page">
+    <header class="hero">
+        <h1>开始比赛</h1>
+        <p>先选择赛制，系统会基于你的技能包生成第一局建议。</p>
+    </header>
+
+    <section class="panel">
+        <h2>选择赛制</h2>
+        <div class="chips" id="format-chips"></div>
+    </section>
+
+    <section class="panel">
+        <h2>第一局建议</h2>
+        <p class="desc" id="summary">请选择赛制后生成第一局建议。</p>
+
+        <div class="field">
+            <div class="field-label">发球建议</div>
+            <div id="serve-plan"></div>
+        </div>
+
+        <div class="field">
+            <div class="field-label">接发建议</div>
+            <div id="receive-plan"></div>
+        </div>
+
+        <div class="field">
+            <div class="field-label">注意事项</div>
+            <div id="reminders"></div>
+        </div>
+    </section>
+
+    <section class="actions">
+        <button id="back-btn" class="secondary-btn">返回修改技能包</button>
+        <button id="start-btn" class="primary-btn">进入比赛记录</button>
+    </section>
+</div>
+
+<script src="/static/match_setup.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>赛后总结</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<div class="page">
+    <header class="hero">
+        <h1>赛后总结</h1>
+        <p>基于整场比赛记录，输出本场表现总结与后续训练建议。</p>
+    </header>
+
+    <section class="panel">
+        <div class="panel-header">
+            <h2>比赛结果</h2>
+            <span class="badge success" id="result-badge">已完成</span>
+        </div>
+        <div class="summary-grid">
+            <div class="summary-box">
+                <h3>比赛结论</h3>
+                <div id="final-result" class="result-text">加载中...</div>
+            </div>
+            <div class="summary-box">
+                <h3>整场概览</h3>
+                <div id="overall-summary" class="result-text">加载中...</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="panel-header">
+            <h2>每局比分</h2>
+        </div>
+        <div id="game-list" class="summary-list">加载中...</div>
+    </section>
+
+    <section class="panel">
+        <div class="panel-header">
+            <h2>关键复盘</h2>
+        </div>
+
+        <div class="summary-grid">
+            <div class="summary-box">
+                <h3>高频得分点</h3>
+                <div id="top-scoring-summary" class="summary-list">加载中...</div>
+            </div>
+
+            <div class="summary-box">
+                <h3>高频失分点</h3>
+                <div id="top-losing-summary" class="summary-list">加载中...</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="panel-header">
+            <h2>对手特征总结</h2>
+        </div>
+        <div id="opponent-traits-summary" class="result-text">加载中...</div>
+    </section>
+
+    <section class="panel">
+        <div class="panel-header">
+            <h2>训练建议</h2>
+        </div>
+        <ol id="training-actions" class="actions-list">
+            <li class="muted">加载中...</li>
+        </ol>
+    </section>
+
+    <section class="top-actions">
+        <button id="back-home-btn" class="secondary-btn">返回首页</button>
+        <button id="restart-btn" class="primary-btn">再来一场</button>
+    </section>
+</div>
+
+<script src="/static/match_state.js"></script>
+<script src="/static/match_summary.js"></script>
+</body>
+</html>

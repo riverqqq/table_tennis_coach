@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>用户信息 / 技能包</title>
+  <link rel="stylesheet" href="/static/profile.css" />
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <h1>用户信息 / 技能包</h1>
+    <p>用选项和评分建立你的比赛技能包，系统会据此生成第一局建议。</p>
+  </header>
+
+  <section class="panel" id="basic-section"></section>
+  <section class="panel" id="equipment-section"></section>
+  <section class="panel" id="serve-section"></section>
+  <section class="panel" id="receive-section"></section>
+  <section class="panel" id="attack-section"></section>
+  <section class="panel" id="control-section"></section>
+
+  <section class="actions">
+    <button id="save-btn" class="secondary-btn">保存技能包</button>
+    <button id="save-start-btn" class="primary-btn">保存并开始比赛</button>
+  </section>
+
+  <div id="status" class="status"></div>
+</div>
+
+<script src="/static/profile.js"></script>
+</body>
+</html>
