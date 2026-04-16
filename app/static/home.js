@@ -50,6 +50,10 @@ function goToMatchSetup() {
   window.location.href = "/match-setup";
 }
 
+function goToSpecialPlaybook() {
+  window.location.href = "/special-playbook";
+}
+
 function continueMatch() {
   const matchState = readJson(MATCH_STATE_KEY);
 
@@ -72,11 +76,13 @@ function initHome() {
 
   const goProfileBtn = document.getElementById("go-profile-btn");
   const goMatchSetupBtn = document.getElementById("go-match-setup-btn");
+  const goSpecialBtn = document.getElementById("go-special-btn");
   const continueMatchBtn = document.getElementById("continue-match-btn");
   const clearMatchBtn = document.getElementById("clear-match-btn");
 
   goProfileBtn?.addEventListener("click", goToProfile);
   goMatchSetupBtn?.addEventListener("click", goToMatchSetup);
+  goSpecialBtn?.addEventListener("click", goToSpecialPlaybook);
   continueMatchBtn?.addEventListener("click", continueMatch);
   clearMatchBtn?.addEventListener("click", clearMatch);
 
@@ -95,7 +101,7 @@ function initHome() {
     return;
   }
 
-  setStatus("技能包已存在。可以直接点击“开始比赛”进入赛制选择。");
+  setStatus("技能包已存在。可以直接点击“开始比赛”进入赛制选择，或进入“专项应对”查询具体球种处理方法。");
 }
 
 document.addEventListener("DOMContentLoaded", initHome);

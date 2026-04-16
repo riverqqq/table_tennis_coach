@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>接发球专项应对</title>
+    <link rel="stylesheet" href="/static/profile.css"/>
+    <style>
+        .query-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 18px;
+        }
+
+        .query-field {
+          background: #ffffff;
+          border: 1px solid rgba(118, 151, 206, 0.12);
+          border-radius: 18px;
+          padding: 16px;
+        }
+
+        .query-field h3 {
+          margin: 0 0 8px;
+          font-size: 18px;
+          color: #17324e;
+        }
+
+        .query-field p {
+          margin: 0 0 12px;
+          color: #6f86a3;
+          font-size: 14px;
+          line-height: 1.6;
+        }
+
+        .result-panel {
+          margin-top: 18px;
+        }
+
+        .result-card {
+          background: #ffffff;
+          border: 1px solid rgba(118, 151, 206, 0.12);
+          border-radius: 18px;
+          padding: 18px;
+          margin-top: 14px;
+        }
+
+        .result-card h3 {
+          margin: 0 0 10px;
+          color: #17324e;
+          font-size: 18px;
+        }
+
+        .result-card p {
+          margin: 0;
+          line-height: 1.8;
+          color: #234261;
+        }
+
+        .result-list {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin-top: 14px;
+        }
+
+        .result-item {
+          background: #ffffff;
+          border: 1px solid rgba(118, 151, 206, 0.12);
+          border-radius: 16px;
+          padding: 16px;
+        }
+
+        .result-item.clickable {
+          cursor: pointer;
+          transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+        }
+
+        .result-item.clickable:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 10px 22px rgba(36, 73, 128, 0.08);
+          border-color: rgba(95, 141, 230, 0.26);
+        }
+
+        .result-item-title {
+          font-size: 16px;
+          font-weight: 700;
+          color: #17324e;
+          margin-bottom: 8px;
+        }
+
+        .result-item-desc {
+          color: #6f86a3;
+          line-height: 1.7;
+          font-size: 14px;
+        }
+
+        .placeholder-box {
+          margin-top: 12px;
+          background: #f4f8ff;
+          border: 1px dashed rgba(118, 151, 206, 0.28);
+          border-radius: 16px;
+          padding: 18px;
+          color: #6f86a3;
+          text-align: center;
+          line-height: 1.7;
+        }
+
+        .hint-box {
+          margin-top: 14px;
+          padding: 14px 16px;
+          border-radius: 16px;
+          background: #f5f9ff;
+          color: #234261;
+          line-height: 1.7;
+          border: 1px solid rgba(120, 158, 245, 0.15);
+        }
+
+        @media (max-width: 760px) {
+          .query-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header class="hero">
+        <h1>接发球专项应对</h1>
+        <p>按旋转、长短、落点、速度、强弱查询具体来球的处理方法。</p>
+    </header>
+
+    <section class="panel">
+        <h2>查询条件</h2>
+        <p class="desc">
+            五个条件会同时显示。若判断不清，可选择“未知”。
+            当已知条件少于 3 项时，系统不会开始查询。
+        </p>
+
+        <div class="query-grid">
+            <div class="query-field">
+                <h3>旋转</h3>
+                <p>请选择来球旋转类型。</p>
+                <div class="chips" id="spin-chips"></div>
+            </div>
+
+            <div class="query-field">
+                <h3>长短</h3>
+                <p>请选择来球第一落点和出台情况。</p>
+                <div class="chips" id="length-chips"></div>
+            </div>
+
+            <div class="query-field">
+                <h3>落点</h3>
+                <p>请选择大致台内位置。</p>
+                <div class="chips" id="placement-chips"></div>
+            </div>
+
+            <div class="query-field">
+                <h3>速度</h3>
+                <p>请选择来球节奏。</p>
+                <div class="chips" id="speed-chips"></div>
+            </div>
+
+            <div class="query-field" id="strength-field">
+                <h3>强弱</h3>
+                <p>如果不是不转球，请选择旋转强度。</p>
+                <div class="chips" id="strength-chips"></div>
+            </div>
+        </div>
+
+        <div class="hint-box" id="query-hint">
+            当前尚未查询。请先完成条件选择。
+        </div>
+    </section>
+
+    <section class="actions">
+        <button id="query-btn" class="primary-btn">开始查询</button>
+        <button id="reset-btn" class="secondary-btn">重置条件</button>
+        <button id="back-btn" class="secondary-btn">返回专项应对</button>
+    </section>
+
+    <section class="panel result-panel">
+        <h2>查询结果</h2>
+        <p class="desc">
+            这里会显示单个球种详情，或在存在“未知”时显示候选球种列表。
+        </p>
+
+        <div id="result-container">
+            <div class="placeholder-box">
+                暂未查询结果。<br />
+                当前已经接入后端查询逻辑，后续只需要逐步补全 306 种球种的详细内容。
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="/static/special_receive.js"></script>
+</body>
+</html>

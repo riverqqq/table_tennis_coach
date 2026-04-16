@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>专项应对</title>
+
+    <!-- 直接复用你现有的样式体系 -->
+    <link rel="stylesheet" href="/static/profile.css"/>
+</head>
+
+<body>
+<div class="page">
+
+    <!-- 顶部 -->
+    <header class="hero">
+        <h1>专项应对</h1>
+        <p>针对具体发球或接发球场景，查询对应球种的专门处理方法。</p>
+    </header>
+
+    <!-- 主模块 -->
+    <section class="panel">
+        <h2>选择模块</h2>
+        <p class="desc">
+            选择你要分析的内容，目前优先支持接发球专项应对。
+        </p>
+
+        <div class="actions">
+            <button id="serve-btn" class="secondary-btn">
+                发球（开发中）
+            </button>
+
+            <button id="receive-btn" class="primary-btn">
+                接发球
+            </button>
+        </div>
+    </section>
+
+    <!-- 说明 -->
+    <section class="panel">
+        <h2>功能说明</h2>
+        <ul>
+            <li>你可以按旋转、长短、落点等条件筛选来球类型</li>
+            <li>如果某些判断不清，可以选择“未知”</li>
+            <li>系统会返回对应球种的处理方法</li>
+        </ul>
+    </section>
+
+    <!-- 底部按钮 -->
+    <section class="actions">
+        <button id="back-home-btn" class="secondary-btn">
+            返回首页
+        </button>
+    </section>
+
+</div>
+
+<script>
+    // 发球（占位）
+    document.getElementById("serve-btn").onclick = () => {
+      alert("发球专项应对功能正在开发中");
+    };
+
+    // 接发球入口（下一步实现的页面）
+    document.getElementById("receive-btn").onclick = () => {
+      window.location.href = "/special-receive";
+    };
+
+    // 返回首页
+    document.getElementById("back-home-btn").onclick = () => {
+      window.location.href = "/home";
+    };
+</script>
+
+</body>
+</html>

@@ -15,6 +15,8 @@ from .profile_models import FirstGamePlanRequest, FirstGamePlanResponse, PlayerP
 
 from .models import TacticRequest, TacticResponse
 from .rules_engine import build_tactical_plan
+from .special_models import ReceiveQueryRequest, ReceiveQueryResponse
+from .special_playbook_engine import query_receive_advice
 from .tags import losing_reasons, opponent_traits, scoring_reasons
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -63,6 +65,16 @@ def read_match_setup_page() -> FileResponse:
     return FileResponse(STATIC_DIR / "match_setup.html")
 
 
+@app.get("/special-playbook")
+def read_special_playbook_page() -> FileResponse:
+    return FileResponse(STATIC_DIR / "special_playbook.html")
+
+
+@app.get("/special-receive")
+def read_special_receive_page() -> FileResponse:
+    return FileResponse(STATIC_DIR / "special_receive.html")
+
+
 @app.get("/api/profile-config")
 def get_profile_config() -> dict:
     return PROFILE_CONFIG
@@ -88,6 +100,11 @@ def tactical_plan(request: TacticRequest) -> TacticResponse:
         opponent_traits=request.opponent_traits,
     )
     return TacticResponse(**plan)
+
+
+@app.post("/api/special-receive-query", response_model=ReceiveQueryResponse)
+def special_receive_query(request: ReceiveQueryRequest) -> ReceiveQueryResponse:
+    return query_receive_advice(request)
 
 
 @app.get("/home")
