@@ -89,7 +89,7 @@ async function init() {
     };
 
     localStorage.setItem("tt_match_state", JSON.stringify(matchState));
-    window.location.href = "/";
+    window.location.href = "/match";
   };
 
   await generateFirstPlan();
