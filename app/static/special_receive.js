@@ -228,15 +228,27 @@ function renderSingleResult(detail, query) {
 
     <div class="result-card">
       <h3>处理概览</h3>
-      <p>${detail.summary}</p>
+      <p>${formatText(detail.summary)}</p>
     </div>
 
     <div class="result-card">
       <h3>专门应对方法</h3>
-      <p>${detail.advice}</p>
+      <p>${formatText(detail.advice)}</p>
       ${imageHtml}
     </div>
   `;
+}
+
+function formatText(text) {
+  if (!text) return "";
+
+  // 处理 **加粗**
+  let html = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+  // 处理换行
+  html = html.replace(/\n/g, "<br>");
+
+  return html;
 }
 
 function renderMultipleResults(candidates, query, message) {
